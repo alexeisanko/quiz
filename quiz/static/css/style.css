@@ -72,7 +72,7 @@ a {
   border-radius: 20px;
 }
 .modal__close {
-  background: url("../images/header/close.svg") no-repeat;
+  background: url("../../images/header/close.svg") no-repeat;
   width: 20px;
   height: 20px;
   position: absolute;
@@ -271,7 +271,7 @@ a {
 }
 
 .search {
-  background: url("../images/main/search.svg") no-repeat center right 8px;
+  background: url("../../images/main/search.svg") no-repeat center right 8px;
   width: 250px;
 }
 
@@ -452,7 +452,7 @@ a {
 }
 
 .policy__checkbox + label::before {
-  content: url("../images/header/non-check.svg");
+  content: url("../../images/header/non-check.svg");
   vertical-align: middle;
   margin-right: 7px;
   position: absolute;
@@ -462,7 +462,7 @@ a {
 }
 
 .policy__checkbox:checked + label::before {
-  content: url("../images/header/check.svg");
+  content: url("../../images/header/check.svg");
 }
 
 .policy1 {
@@ -478,7 +478,7 @@ a {
 }
 
 .policy1__checkbox + label::before {
-  content: url("../images/header/non-check.svg");
+  content: url("../../images/header/non-check.svg");
   vertical-align: middle;
   margin-right: 7px;
   position: relative;
@@ -487,7 +487,7 @@ a {
 }
 
 .policy1__checkbox:checked + label::before {
-  content: url("../images/header/check.svg");
+  content: url("../../images/header/check.svg");
 }
 
 @media screen and (max-width: 625px) {
