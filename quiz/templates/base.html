@@ -45,9 +45,82 @@
   </head>
   <body class="{% block bodyclass %}{% endblock bodyclass %}">
     {% block body %}
-      {% if messages %}
-        {% for message in messages %}{% endfor %}
-      {% endif %}
+    <div class="left-menu">
+      <img class="card__info card__close left-menu__close" src="{% static "images/header/close.svg" %}" alt="close" />
+      <p class="left-menu__title">Выберите действие</p>
+      <div class="left-menu__admin">
+        <a href={% url "main:new-quiz" %} class="left-menu__item btn">Создать викторину</a>
+        <a href={% url "main:bank-question" %} class="left-menu__item btn">Банк вопросов</a>
+        <a href={% url "main:news" %} class="left-menu__item btn">Отправить новость</a>
+        <a href={% url "main:teams" %} class="left-menu__item btn">Управление командами</a>
+        <div class="left-menu__item btn">Чат с администраторами</div>
+        <a href="#" class="exit">Выйти</a>
+      </div>
+      <div class="left-menu__supadmin">
+        <a href={% url "main:new-quiz" %} class="left-menu__item btn">Создать викторину</a>
+        <a href={% url "main:bank-question" %} class="left-menu__item btn">Банк вопросов</a>
+        <a href={% url "main:news" %} class="left-menu__item btn">Отправить новость</a>
+        <a href={% url "main:teams" %} class="left-menu__item btn">Управление командами</a>
+        <a href={% url "main:applications" %} class="left-menu__item btn">Заявки в администраторы</a>
+        <div class="left-menu__item btn">Чат с администраторами</div>
+        {% comment %} users {% endcomment %}
+        <a href={% url "main:users" %} class="left-menu__item btn">Управление пользователями</a>
+        <a href="#" class="exit">Выйти</a>
+      </div>
+      <div class="left-menu__user">
+        {% comment %} news {% endcomment %}
+        <a class="left-menu__item btn" href="#">Новости</a>
+        <div class="left-menu__item btn">Чат с командой</div>
+        <div class="left-menu__item btn">История участия</div>
+        <div class="left-menu__item btn">Посмотреть команду</div>
+        <a href="#" class="exit">Выйти</a>
+      </div>
+    </div>
+    <div class="left-menu-data">
+      <img class="card__info card__close left-menu-data__close" src="{% static "images/header/close.svg" %}" alt="close" />
+      <p class="left-menu__title">Личные данные</p>
+      <div class="left-menu__data data">
+        <img src=# alt="photo" class="data__img" />
+        <p class="data__item">
+          <span>ФИО:</span>
+          <span class="data__item--name">Загрузка...</span>
+        </p>
+        <p class="data__item">
+          <span>E-mail:</span>
+          <span class="data__item--mail">Загрузка...</span>
+        </p>
+        <p class="data__item">
+          <span>Права:</span>
+          <span class="data__item--role">Загрузка...</span>
+        </p>
+        <div class="btn">Редактировать данные</div>
+      </div>
+    </div>
+    <!-- Добавить в фильтр shuffle.js -->
+  <!-- для регистрации на участие добавить список из уже существующих команд и возможность добавить новую -->
+  <header class="header">
+    <input type="hidden" class="hidden-role" value="role" />
+    <input type="hidden" class="hidden-user" value="user" />
+    <div class="container">
+      <div class="header__content">
+        <a href={% url "main:index" %} class="logo header__logo">
+          <img class="logo__img" src="{% static "images/header/logo.svg" %}" alt="QUIZ" />
+          <div class="logo__info">
+            <span class="logo__title">Quiz</span>
+            <span class="logo__desc">Сервис для проведения викторин</span>
+          </div>
+        </a>
+        <div class="menu header__menu">
+          <a href="#" class="menu__item menu__actions">Меню</a>
+          {% comment %} news.html {% endcomment %}
+          <a href="#" class="menu__item menu__news">Новости</a>
+          <img class="menu__info" src="{% static "images/header/info.svg" %}" alt="info" />
+          <img class="menu__auth" src="{% static "images/header/login.svg" %}" alt="->" />
+          <img class="menu__people" src="{% static "images/header/people.svg" %}" alt="men" />
+        </div>
+      </div>
+    </div>
+  </header>
       {% block main %}
         {% block content %}
         {% endblock content %}
@@ -55,6 +128,115 @@
     {% endblock body %}
     <!-- /container -->
     {% block modal %}
+    <div class="modals">
+      <div class="modal modal--auth">
+        <div class="modal__dialog">
+          <button class="modal__close"></button>
+          <h3 class="modal__title card__title">Авторизация</h3>
+          <form action="#"
+                id="form-auth"
+                method="post"
+                class="form modal__form"
+                novalidate="novalidate">
+            <input class="form__input card__input mail"
+                   type="text"
+                   placeholder="Введите email*" />
+            <input class="form__input card__input pass"
+                   type="password"
+                   placeholder="Введите пароль*" />
+            <p class="form__text">
+              Еще не с нами? <span class="pink link form__reg">Зарегистрироваться</span>
+            </p>
+            <p class="form__text">
+              <span class="pink link form__recover">Забыли пароль?</span>
+            </p>
+            <span class="auth-error">Введите данные</span>
+            <input type="submit" class="form__btn btn btn--auth" value="Войти" />
+          </form>
+        </div>
+      </div>
+      <div class="modal modal--reg">
+        <div class="modal__dialog">
+          <button class="modal__close"></button>
+          <h3 class="modal__title card__title">Регистрация</h3>
+          <form action="#"
+                id="form-reg"
+                method="post"
+                class="form modal__form"
+                novalidate="novalidate">
+            <input class="form__input card__input name"
+                   type="text"
+                   placeholder="Введите ФИО*" />
+            <input class="form__input card__input mail"
+                   id="reg-mail"
+                   type="text"
+                   placeholder="Введите email*" />
+            <input class="form__input card__input pass1"
+                   type="password"
+                   placeholder="Введите пароль*" />
+            <input class="form__input card__input pass2"
+                   type="password"
+                   placeholder="Повторите пароль*" />
+            <div class="form__adm policy1">
+              <input type="checkbox" class="policy1__checkbox" id="admin" />
+              <label for="admin">Хочу быть администратором</label>
+            </div>
+            <span class="form__error">Пароли не совпадают</span>
+            <input type="submit"
+                   class="form__btn btn btn--reg"
+                   value="Зарегистрироваться" />
+          </form>
+        </div>
+      </div>
+      <div class="modal modal--change">
+        <div class="modal__dialog">
+          <button class="modal__close"></button>
+          <h3 class="modal__title card__title">Редактирование</h3>
+          <form id="form-change"
+                enctype="multipart/form-data"
+                method="post"
+                class="form modal__form"
+                novalidate="novalidate">
+            <input type="hidden" class="hidden-user" name="user_id" />
+            <input name="name"
+                   class="form__input card__input name change-name"
+                   type="text"
+                   placeholder="Введите ФИО*" />
+            <input name="photo"
+                   class="form__input card__input photo change-photo"
+                   accept="application/x-zip-compressed,image/*"
+                   type="file"
+                   placeholder="Загрузить фото" />
+            <input name="mail"
+                   class="form__input card__input mail change-mail"
+                   id="change-mail"
+                   type="text"
+                   placeholder="Введите email*" />
+            <input name="pass1"
+                   class="form__input card__input"
+                   id="change-pass1"
+                   type="password"
+                   placeholder="Введите новый пароль*" />
+            <input name="pass2"
+                   class="form__input card__input"
+                   id="change-pass2"
+                   type="password"
+                   placeholder="Повторите пароль*" />
+            <div class="form__adm policy1">
+              <input type="checkbox"
+                     name="admin"
+                     class="policy1__checkbox"
+                     id="change-admin" />
+              <label for="change-admin">Хочу быть администратором</label>
+            </div>
+            <span class="form__error change-form__error">Пароли не совпадают</span>
+            <input type="submit"
+                   class="form__btn btn btn--change"
+                   value="Сохранить изменения" />
+          </form>
+        </div>
+      </div>
+    </div>
     {% endblock modal %}
     {% block inline_javascript %}
     {% endblock inline_javascript %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block main %}
+<main style="padding-bottom: 100px">
+    <div class="container">
+        <div class="btns">
+            <div class="btn btn--active btn-info">Основная информация</div>
+            <div class="btn btn-qs">Вопросы</div>
+        </div>
+        <div class="quiz">
+            <div class="quiz__info quiz-info">
+                <form action="#" class="quiz-info__form">
+                    <input type="text" class="card__input quiz-name" placeholder="Название викторины*">
+                    <input list="themes" class="card__input quiz-theme" placeholder="Тема викторины*">
+                    <datalist id="themes">
+                        <option value="item.title">
+                        <option value="item.title">
+                        <option value="item.title">
+                        <option value="item.title">
+                    </datalist>
+                    <textarea rows="5" class="card__input quiz-desc" placeholder="Описание викторины*"></textarea>
+                    <div class="quiz-info__time">
+                        <div class="quiz-info__datetime">
+                            <span>Количество команд</span>
+                            <input type="number" class="card__input quiz-count-teams" placeholder="Количество команд" value="100">
+                        </div>
+                        <div class="quiz-info__datetime">
+                            <span>Количество участников в команде</span>
+                            <input type="number" class="card__input quiz-count-people" placeholder="Количество участников в команде" value="100">
+                        </div>
+                    </div>
+
+                    <div class="quiz-info__time">
+                        <div class="quiz-info__datetime">
+                            <span>Дата и время начала*</span>
+                            <input type="datetime-local" class="card__input quiz-datetime-start">
+                        </div>
+                        <div class="quiz-info__datetime">
+                            <span>Дата и время окончания*</span>
+                            <input type="datetime-local" class="card__input quiz-datetime-end">
+                        </div>
+                    </div>
+                    <div class="quiz-info__dop">
+                        <div class="quiz-info__checkbox quiz-info__checkbox--certificate policy1">
+                            <input type="checkbox" id="certificate" class="policy__checkbox quiz-cert">
+                            <label for="certificate">Высылать сертификаты</label>
+                        </div>
+                        <div class="quiz-info__checkbox quiz-info__checkbox--active policy1">
+                            <input type="checkbox" id="active" class="policy__checkbox quiz-active">
+                            <label for="active">Активна</label>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-quiz" value="Создать">
+                    <input type="submit" class="btn btn-quiz-update" value="Сохранить">
+                </form>
+            </div>
+            <div class="quiz__content"></div>
+        </div>
+        <div class="questions">
+            <div class="left">
+                <h2 class="left__title">Список добавленных вопросов</h2>
+                <!-- <div class="questions__item">
+                    <div class="questions__title">
+                        <span class="title">Вопрос 1</span>
+                        <img src="/img/new-quiz/pencil.svg" alt="Редактировать">
+                        <img src="/img/new-quiz/delete.svg" alt="Удалить">
+                    </div>
+                    <p class="questions__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, at reiciendis magni architecto provident quaerat ut cum quae commodi, dolorum, consequatur quibusdam officia ratione? Voluptate non hic error atque asperiores!</p>
+                </div> -->
+            </div>
+            <div class="right">
+                <form action="#" class="admin__news questions__form" enctype="multipart/form-data" method="POST">
+                    <input type="hidden" class="quiz-id" name="quiz-id">
+                    <input placeholder="Выберите тип вопроса" type="text" list="qs-type" class="card__input qs-type" name="qs-type">
+                    <datalist id="qs-type">
+                        <option value="item.title">
+                        <option value="item.title">
+                        <option value="item.title">
+                        <option value="item.title">
+                    </datalist>
+                    <textarea placeholder="Введите вопрос" rows="5" class="card__input" name="qs"></textarea>
+                    <input type="text" placeholder="Введите ответ" class="card__input qs-text" name="qs-answer">
+                    <input type="text" placeholder="Вставьте код карты" class="card__input qs-text-card" name="qs-map">
+                    <div class="qs-test">
+                        <input type="hidden" name="qs-check" class="qs-check">
+                        <div class="card__policy policy">
+                            <input type="checkbox" class="policy__checkbox" id="ans-1" name="qs-check-1">
+                            <label for="ans-1"><input name="qs-check-answer-1" type="text" class="card__input" placeholder="Введите ответ"></label>
+                        </div>
+                        <p class="qs-test-add">Добавить ответ</p>
+                    </div>
+                    <div class="qs-drag-and-drop">
+                        <input type="hidden" name="qs-ans" class="qs-ans">
+                        <input type="text" placeholder="Введите ответ" class="card__input qs-answer" id="qs-answer-1" name="qs-ans-1">
+                        <p class="qs-test-add qs-test-add-drag">Добавить ответ</p>
+                    </div>
+                    <div class="file">
+                        <input type="file" class="news__file" multiple id="news-file" name="qs-files">
+                    </div>
+                    <div class="card__policy policy">
+                        <input type="checkbox" class="policy__checkbox" id="policy__checkbox-4" checked="true" name="qs-bank">
+                        <label for="policy__checkbox-4">Добавить в банк вопросов</label>
+                    </div>
+                    <input type="submit" class="btn btn--add-qs" value="Добавить вопрос">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

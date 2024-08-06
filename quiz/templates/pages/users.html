@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block main %}
+<main class="applications">
+    <div class="container">
+        <div class="applications__teams">
+            <input class="input search" type="search" id="user-search" placeholder="Поиск" style="display: block">
+        </div>
+        <div class="applications__info">
+            <h2 class="applications__title title">Управление пользователями</h2>
+            <div class="applications__content" id="search-gallery">
+                <div class="data search-data" data-groups="item.name">
+                    <img src="img/news/people.jpg" alt="photo" class="data__img">
+                    <p class="data__item">
+                        <span>ФИО:</span>
+                        <span class="search-data-item">Фамилия Имя Отчество</span>
+                    </p>
+                    <p class="data__item">
+                        <span>E-mail:</span>
+                        <span>klfd@gmail.com</span>
+                    </p>
+                    <p class="data__item">
+                        <span>Права:</span>
+                        <span>Суперадмин</span>
+                    </p>
+                    <div class="application-btns">
+                        <div class="btn change-data-user change-user" data-name="item.name" data-email="item.email" data-role="item.role" data-user="item.user_id"><img src="/img/apps/change.svg" alt="Редактировать"></div>
+                        <div class="btn change-data-user delete-user" data-user="item.user_id"><img src="/img/apps/no.svg" alt="Удалить"></div>
+                    </div>
+                </div>
+                <div class="data search-data" data-groups="item.name">
+                    <img src="img/news/people.jpg" alt="photo" class="data__img">
+                    <p class="data__item">
+                        <span>ФИО:</span>
+                        <span class="search-data-item">Фамилия Имя Отчество</span>
+                    </p>
+                    <p class="data__item">
+                        <span>E-mail:</span>
+                        <span>klfd@gmail.com</span>
+                    </p>
+                    <p class="data__item">
+                        <span>Права:</span>
+                        <span>Суперадмин</span>
+                    </p>
+                    <div class="application-btns">
+                        <div class="btn change-data-user change-user" data-name="item.name" data-email="item.email" data-role="item.role" data-user="item.user_id"><img src="/img/apps/change.svg" alt="Редактировать"></div>
+                        <div class="btn change-data-user delete-user" data-user="item.user_id"><img src="/img/apps/no.svg" alt="Удалить"></div>
+                    </div>
+                </div>
+                <div class="data search-data" data-groups="item.name">
+                    <img src="img/news/people.jpg" alt="photo" class="data__img">
+                    <p class="data__item">
+                        <span>ФИО:</span>
+                        <span class="search-data-item">Фамилия Имя Отчество</span>
+                    </p>
+                    <p class="data__item">
+                        <span>E-mail:</span>
+                        <span>klfd@gmail.com</span>
+                    </p>
+                    <p class="data__item">
+                        <span>Права:</span>
+                        <span>Суперадмин</span>
+                    </p>
+                    <div class="application-btns">
+                        <div class="btn change-data-user change-user" data-name="item.name" data-email="item.email" data-role="item.role" data-user="item.user_id"><img src="/img/apps/change.svg" alt="Редактировать"></div>
+                        <div class="btn change-data-user delete-user" data-user="item.user_id"><img src="/img/apps/no.svg" alt="Удалить"></div>
+                    </div>
+                </div>
+                <div class="data search-data" data-groups="item.name">
+                    <img src="img/news/people.jpg" alt="photo" class="data__img">
+                    <p class="data__item">
+                        <span>ФИО:</span>
+                        <span class="search-data-item">Фамилия Имя Отчество</span>
+                    </p>
+                    <p class="data__item">
+                        <span>E-mail:</span>
+                        <span>klfd@gmail.com</span>
+                    </p>
+                    <p class="data__item">
+                        <span>Права:</span>
+                        <span>Суперадмин</span>
+                    </p>
+                    <div class="application-btns">
+                        <div class="btn change-data-user change-user" data-name="item.name" data-email="item.email" data-role="item.role" data-user="item.user_id"><img src="/img/apps/change.svg" alt="Редактировать"></div>
+                        <div class="btn change-data-user delete-user" data-user="item.user_id"><img src="/img/apps/no.svg" alt="Удалить"></div>
+                    </div>
+                </div>
+                <div class="data search-data" data-groups="item.name">
+                    <img src="img/news/people.jpg" alt="photo" class="data__img">
+                    <p class="data__item">
+                        <span>ФИО:</span>
+                        <span class="search-data-item">Фамилия Имя Отчество</span>
+                    </p>
+                    <p class="data__item">
+                        <span>E-mail:</span>
+                        <span>klfd@gmail.com</span>
+                    </p>
+                    <p class="data__item">
+                        <span>Права:</span>
+                        <span>Суперадмин</span>
+                    </p>
+                    <div class="application-btns">
+                        <div class="btn change-data-user change-user" data-name="item.name" data-email="item.email" data-role="item.role" data-user="item.user_id"><img src="/img/apps/change.svg" alt="Редактировать"></div>
+                        <div class="btn change-data-user delete-user" data-user="item.user_id"><img src="/img/apps/no.svg" alt="Удалить"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

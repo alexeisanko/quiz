@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block main %}
+
+<main class="applications">
+    <div class="container">
+        <div class="applications__teams">
+            <input class="input search" type="search" placeholder="Поиск" style="display: block">
+        </div>
+        <div class="applications__info">
+            <h2 class="applications__title title">Заявки в администраторы</h2>
+            <div class="applications__content">
+                <div class="data">
+                    <img src="<%= item.photo_url %>" alt="photo" class="data__img">
+                    <p class="data__item">
+                        <span>ФИО:</span>
+                        <span><%= item.name %></span>
+                    </p>
+                    <p class="data__item">
+                        <span>E-mail:</span>
+                        <span><%= item.email %></span>
+                    </p>
+                    <p class="data__item">
+                        <span>Права:</span>
+                        <span><%= item.role %></span>
+                    </p>
+                    <div class="application-btns">
+                        <div class="btn application-role yes" data-user="<%= item.user_id %>"><img src="/img/apps/yes.svg" alt="Принять"></div>
+                        <div class="btn application-role no" data-user="<%= item.user_id %>"><img src="/img/apps/no.svg" alt="Отклонить"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock main %}

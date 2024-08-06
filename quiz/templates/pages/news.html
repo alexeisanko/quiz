@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block main %}
+
+<main>
+    <div class="container">
+        <div class="content">
+            <div class="news">
+                <h2 class="agree">Новостей пока нет</h2>
+                <div class="news__item new">
+                    <span class="news__date"><%= item.datetime %></span>
+                    <div class="new__author author">
+                        <img src="img/news/people.jpg" alt="women" class="author__img">
+                        <div class="author__info">
+                            <span class="author__name"><%= item.name %></span>
+                            <span class="author__quiz"><%= item.title %></span>
+                            <span class="author__quiz">Общая новость</span>
+                        </div>
+                    </div>
+                    <p class="new__text">
+                        <%= item.text %>
+                    </p>
+                    <!-- <div class="new__more">
+                        <span>Читать далее</span>
+                        <img src="img/news/arrow-right.svg" alt="->">
+                    </div> -->
+                </div>
+            </div>
+            <!-- если роль админ или суперадмин -->
+            <form action="#" class="admin__news">
+                <input placeholder="Выберите викторину" type="text" list="quiz" class="card__input card__input-quiz">
+                <datalist id="quiz">
+                    <option value="Общая новость">
+                        <option value="<%= item.title %>">
+                </datalist>
+                <textarea placeholder="Введите новость" rows="5" class="card__input card__input-text"></textarea>
+                <input type="submit" class="btn btn--add-news" value="Добавить новость">
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock main %}
