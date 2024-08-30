@@ -36,80 +36,82 @@ $('.form__reg').click(function() {
     $('.modal--reg').addClass('modal--visible');
 });
 
-$('.btn--reg').click(function(e) {
-    e.preventDefault();
-    var pass1 = $('.pass1').val();
-    var pass2 = $('.pass2').val();
-    var name = $('.name').val();
-    var mail = $('#reg-mail').val();
-    var admin = $('#admin').prop('checked');
+// $('.btn--reg').click(function(e) {
+//     e.preventDefault();
+//     var pass1 = $('.pass1').val();
+//     var pass2 = $('.pass2').val();
+//     var name = $('.name').val();
+//     var mail = $('#reg-mail').val();
+//     var admin = $('#admin').prop('checked');
 
-    // не забыть проверку на пустоту
+//     // не забыть проверку на пустоту
 
-    if (pass1 != pass2) { // совпадение паролей
-        $('.form__error').css('visibility', 'visible');
-    }
+//     if (pass1 != pass2) { // совпадение паролей
+//         $('.form__error').css('visibility', 'visible');
+//     }
 
-    $.ajax({
-        url: '/ajax/',
-        method: 'post',
-        dataType: 'JSON',
-        data: {
-            'ajax': 'reg',
-            'name': name,
-            'mail': mail,
-            'pass': pass1,
-            'admin': admin
-        },
-        success: function(data) {
-            if (data['status'] == 'Дубликат почты') {
-                $('.form__error').text('Ошибка! Пользователь с таким адресом почты уже существует');
-                $('.form__error').css('visibility', 'visible');
-                $('.form__error').css('color', 'red');
-            } else if (data['status'] == 'Ошибка' || data['status'] == undefined) {
-                $('.form__error').text('Возникла ошибка, попробуйте позже');
-                $('.form__error').css('visibility', 'visible');
-                $('.form__error').css('color', 'red');
-            } else {
-                $('.form__error').text('Вы успешно зарегистрированы');
-                $('.form__error').css('visibility', 'visible');
-                $('.form__error').css('color', 'green');
-            }
-        },
-        error: function(data) {
-            $('.form__error').text('Возникла ошибка, попробуйте позже');
-        }
-    });
-});
+//     $.ajax({
+//         url: $('#form-reg').attr('action'),
+//         method: $('#form-reg').attr('method'),
+//         dataType: 'JSON',
+//         data: {
+//             'ajax': 'reg',
+//             'name': name,
+//             'mail': mail,
+//             'pass': pass1,
+//             'admin': admin,
+//             "csrfmiddlewaretoken": $('input[name=csrfmiddlewaretoken]').val()
+//         },
+//         success: function(data) {
+//             if (data['status'] == 'Дубликат почты') {
+//                 $('.form__error').text('Ошибка! Пользователь с таким адресом почты уже существует');
+//                 $('.form__error').css('visibility', 'visible');
+//                 $('.form__error').css('color', 'red');
+//             } else if (data['status'] == 'Ошибка' || data['status'] == undefined) {
+//                 $('.form__error').text('Возникла ошибка, попробуйте позже');
+//                 $('.form__error').css('visibility', 'visible');
+//                 $('.form__error').css('color', 'red');
+//             } else {
+//                 $('.form__error').text('Вы успешно зарегистрированы');
+//                 $('.form__error').css('visibility', 'visible');
+//                 $('.form__error').css('color', 'green');
+//             }
+//         },
+//         error: function(data) {
+//             $('.form__error').text('Возникла ошибка, попробуйте позже');
+//         }
+//     });
+// });
 
-$('.btn--auth').click(function(e) {
-    e.preventDefault();
-    var mail = $('.mail').val();
-    var pass = $('.pass').val();
-    if (mail == '' || pass == '') {
-        $('.auth-error').css('display', 'block');
-    } else {
-        $.ajax({
-            url: '/ajax/',
-            method: 'post',
-            dataType: 'JSON',
-            data: {
-                'ajax': 'auth',
-                'mail': mail,
-                'pass': pass,
-            },
-            success: function(data) {
-                alert('OK');
-                console.log(data);
-                // получить сессию, добавить в index input hidden, открыть нужные поля
-            },
-            error: function(data) {
-                $('.auth-error').text('Возникла ошибка, попробуйте позже');
-                $('.auth-error').css('display', 'block');
-            }
-        });
-    }
-});
+// $('.btn--auth').click(function(e) {
+//     e.preventDefault();
+//     var mail = $('.mail').val();
+//     var pass = $('.pass').val();
+//     if (mail == '' || pass == '') {
+//         $('.auth-error').css('display', 'block');
+//     } else {
+//         $.ajax({
+//             url: $('#form-auth').attr('action'),
+//             method: $('#form-auth').attr('method'),
+//             dataType: 'JSON',
+//             data: {
+//                 'ajax': 'auth',
+//                 'mail': mail,
+//                 'pass': pass,
+//                 "csrfmiddlewaretoken": $('input[name=csrfmiddlewaretoken]').val()
+//             },
+//             success: function(data) {
+//                 alert('OK');
+//                 console.log(data);
+//                 // получить сессию, добавить в index input hidden, открыть нужные поля
+//             },
+//             error: function(data) {
+//                 $('.auth-error').text('Возникла ошибка, попробуйте позже');
+//                 $('.auth-error').css('display', 'block');
+//             }
+//         });
+//     }
+// });
 
 $('#form-auth input').on('change', function() {
     $('.auth-error').css('display', 'none');

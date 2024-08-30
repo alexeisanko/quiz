@@ -3,57 +3,42 @@
 {% load static %}
 
 {% block main %}
-<main class="bank">
+  <main class="bank">
     <div class="container">
-        <section class="filter main__filter">
-            <input class="input" list="themes" placeholder="Тематика">
-            <input class="input search" type="search" placeholder="Поиск">
-            <input class="btn" type="submit" value="Применить">
-            <datalist id="themes">
-                <option>Математика</option>
-                <option>Литература</option>
-                <option>Русский язык</option>
-                <option>Иностранный язык</option>
-            </datalist>
-        </section>
-        <section class="bank__content">
-            <h2 class="bank__title title">Банк вопросов</h2>
-            <table class="bank__table" border="1">
-                <tr>
-                    <th>№</th>
-                    <th>Тип вопроса</th>
-                    <th>Текст вопроса</th>
-                    <th>Ответ на вопрос</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Текстовый</td>
-                    <td>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</td>
-                    <td>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Тестовый</td>
-                    <td>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint <br> A. Sofia <br> B. Alex <br> C. Den
-                    </td>
-                    <td>A, B</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Текстовый</td>
-                    <td>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</td>
-                    <td>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </td>
-                </tr>
-            </table>
-            <div class="bank__btns">
-                <div class="questions__add">
-                    <img src="/img/new-quiz/add-qs.svg" alt="+">
-                    <span>Добавить вопрос</span>
-                </div>
-                <div class="btn">Скачать банк вопросов</div>
-            </div>
-        </section>
+      <section class="filter main__filter">
+        <input class="input" list="themes" placeholder="Тематика" />
+        <input class="input search" type="search" placeholder="Поиск" />
+        <input class="btn" type="submit" value="Применить" />
+        <datalist id="themes">
+          {% for theme in themes %}<option>{{ theme }}</option>{% endfor %}
+        </datalist>
+      </section>
+      <section class="bank__content">
+        <h2 class="bank__title title">Банк вопросов</h2>
+        <table class="bank__table" border="1">
+          <tr>
+            <th>№</th>
+            <th>Тип вопроса</th>
+            <th>Текст вопроса</th>
+            <th>Ответ на вопрос</th>
+          </tr>
+          {% for question in questions %}
+            <tr>
+              <td>{{ question.quiz_id }}</td>
+              <td>{{ question.qs_type }}</td>
+              <td>{{ question.question }}</td>
+              <td>{{ question.answer }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+        <div class="bank__btns">
+          <div class="questions__add">
+            <img src="/img/new-quiz/add-qs.svg" alt="+" />
+            <span>Добавить вопрос</span>
+          </div>
+          <div class="btn">Скачать банк вопросов</div>
+        </div>
+      </section>
     </div>
-</main>
-
+  </main>
 {% endblock main %}
